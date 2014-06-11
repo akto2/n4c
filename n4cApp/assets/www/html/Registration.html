@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration</title>
+    
+    <meta charset="utf-8">
+    
+<link rel="stylesheet" href="../css/reset.css"></link>
+<link rel="stylesheet" href="../css/registration.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+    
+    <script src="../js/jquery-1.11.1.min.js"></script>
+  </head>
+  <body>
+    <div id="nav">
+      <h1 class="logo">LOGO</h1>
+      <span class="fa fa-bars"></span> 
+      <span class="fa fa-user"></span>
+    </div>
+    
+<div class="body b-body">
+  <div class="body s-body">
+
+      <form action="" class="regi-form">
+        <header>함께하실까요</header>
+        
+        <fieldset>
+
+          <section>
+            <label class="input">
+              <i class="icon-append icon-user"></i> 
+              <input type="text" placeholder="Username" id="name">
+              <b class="tooltip tooltip-bottom-right" >누군가에게는 의미있는 부름!</b>
+            </label>
+          </section>
+          
+          <section>
+            <label class="input">
+              <i class="icon-append icon-user"></i> 
+              <input type="text" placeholder="Nickname" id="nick">
+              <b class="tooltip tooltip-bottom-right">봄날의 곰을 좋아하세요?</b>
+            </label>
+          </section>
+
+          <section>
+            <label class="input">
+              <i class="icon-append icon-envelope-alt"></i>
+              <input type="email" placeholder="Email address" id="email">
+              <b class="tooltip tooltip-bottom-right">바람을 타고 전해지는 향기~</b>
+            </label>
+          </section>
+
+          <section>
+            <label class="input">
+              <i class="icon-append icon-lock"></i> 
+              <input type="password" placeholder="Password" id="pass">
+              <b class="tooltip tooltip-bottom-right">누구에게나 비밀은 있어요.</b>
+            </label>
+          </section>
+
+          <section>
+            <label class="input">
+              <i class="icon-append icon-lock"></i>
+              <input type="password" placeholder="Confirm password" id="passRe">
+              <b class="tooltip tooltip-bottom-right">비밀의 화원 그리고 열쇠</b>
+            </label>
+          </section>
+          <!-- <hr> -->
+        </fieldset>
+          
+        <footer>
+          <button type="button" class="button" id="regist">회원가입</button>  
+        </footer>
+        
+      </form>
+      </div>
+  </div>
+  
+    <script src="../js/jquery-1.11.1.min.js"></script>
+  <script src="../js/button.js"></script>
+  
+<script>
+$(document).ready(function(){
+	  $('#regist').click(function(e){
+	    e.preventDefault();
+	    if ($('#name').val().length < 2) {
+	    	alert("이름은 2자 이상 아니냐???");
+	    } else if ($('#nick').val().length =="") {
+	    	alert("닉네임을 입력하는게 좋을껄??");
+	    } else if ($('#email').val().length == "") {
+	      alert("이메일 입력해라");	
+	    } else if ($('#pass').val() != $('#passRe').val()) {
+	      alert("비밀번호가 일치하지 않습니다.");
+	    } else if ($('#pass').val().length<6) {
+	          alert("비밀번호를 최소 6자 이상 입력해주세요.");
+	    } else {
+	    	$.ajax({
+	    		type:"POST",
+	    		url:"http://14.32.7.49:3334/newAcc?",
+	    		data: {
+	    			name:$('#name').val(),
+	    			nick:$('#nick').val(),
+	    			email:$('#email').val(),
+	    			password:$('#pass').val()
+	    		},
+	    		dataType: "JSON",
+	    		success: function(jsonObj) {
+    			   var email=$('#email').val();        
+               $.getJSON('http://14.32.7.49:3334/getUser?email='+email , function(jsonObj){
+               console.log(jsonObj)
+               var uno = jsonObj[0].UNO;
+	    			 if(window.sessionStorage){
+               sessionStorage.userEmail = email;
+               sessionStorage.userNo = uno;
+             }
+	    			alert("회원가입 됐고 리스트로 갑니다~");
+	    			location.href="list.html";
+	    		});
+	    		},
+	    		error : function() {
+	    			alert('회원가입 실패함....ㅠ');
+   			  }
+  		   });
+    	  }
+    });
+});
+</script>
+</body>
+</html>

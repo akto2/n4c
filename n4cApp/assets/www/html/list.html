@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>list</title>
+<link rel="stylesheet" href="../css/reset.css"></link>
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+<link rel="stylesheet" type="text/css" href="../css/list.css" />
+<link rel="stylesheet" type="text/css" href="../css/wrapper.css" />
+
+<script src="../js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+  <div id="warp">
+    <div id="nav">
+      <h1 class="logo">LOGO</h1>
+      <span class="fa fa-bars"></span> 
+      <span class="fa fa-user"></span>
+    </div>
+    <div class="map2">
+      <iframe id="map" class="map" name="frame" src="gMap.html"></iframe>
+    </div>
+
+    <div id="wrapper">
+      <div id="container">
+      </div>
+    </div>
+
+  <div id="Chatbox">
+    <div class="cwarp">
+      <input class="chat" type="text" value="무슨일이 일어나고 있나요?" /> <i
+        class="fa fa-picture-o"></i> <i class="fa fa-camera"></i>
+    </div>
+  </div>
+  </div>
+
+
+<script src="../js/list.js"></script>
+<script src="../js/writing.js"></script>
+<script src="../js/button.js"></script>
+
+<script>
+ $(document).ready(function(){
+  $(".chat").click(function(){
+    $('#wrapper').load('1writing.html');
+  });
+}); 
+</script>
+</body>
+</html>

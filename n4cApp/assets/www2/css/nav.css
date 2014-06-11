@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+  #nav{width: 100%; height: 44px; background: white; 
+  border-bottom: #C6C6C6 solid 1px; position: fixed; top:-0px; 
+  z-index: 2000}
+  
+    
+  .logo{ font-size: 22px; height: 100%; 
+  text-align:center; padding: 0;  margin-top: 11px;
+   }
+
+.fa{
+   font-size: 23px;
+   color: #8C8C8C; border-radius:3px;
+   } 
+
+  .fa-bars{float: left; margin: -54px 0 0 22px; }
+  .fa-user{float: right; margin: -54px 22px 0 0px; }
+  
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>writing</title>
+<link rel="stylesheet" href="../css/reset.css"></link>
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+<link rel="stylesheet" type="text/css" href="../css/writing.css" />
+<link rel="stylesheet" type="text/css"
+	href="../css/jquery-ui-1.10.4.custom.css" />
+
+</head>
+<body>
+
+	<div id="warp">
+		<div id="nav">
+			<h1 class="logo">LOGO</h1>
+			<span class="fa fa-bars"></span> <span class="fa fa-user"></span>
+		</div>
+
+		<div id="wrapper">
+			<div id="header">
+				<button class="btn" id="btnReg">등록</button>
+				<input id="number" type="text" readonly />
+			</div>
+			<div id="textbar">
+				<textarea class="text" id="text" onkeyup="fc_chk_byte();" autofocus
+					placeholder="내용을 입력하세요~"></textarea>
+
+				<div id="btnbar">
+					<button class="btn1 fa fa-picture-o" id="btn1"></button>
+					<input id="file" type='file' style="display: none"></input>
+					<button class="btn2"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="http://maps.googleapis.com/maps/api/js?AIzaSyCwtLZdljYGMMqXT1JCK1JvI2BRV-0o-b8&sensor=SET_TO_TRUE_OR_FALSE">
+		
+	</script>
+	<script src="../js/jquery-1.11.1.min.js"></script>
+	<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+	<script src="../js/writing.js"></script>
+	<script src="../js/button.js"></script>
+	<script>
+		if (!sessionStorage.userEmail) {
+	      alert("로그인 안됨 로그인 페이지로 가야되");
+	      location.href = 'log-in.html';
+	    } else {
+	      var email = sessionStorage.userEmail;
+	      $.getJSON('http://14.32.7.49:3334/getUser?email=' + email,
+	          function(jsonObj) {
+	            $('#header').append(
+                $('<span>').text(jsonObj[0].NAME).addClass(
+                   'username1'));
+         });
+      }
+		$(document).ready(function(){
+		$('#btnReg').click(function(e) {
+			e.preventDefault();
+      var userNo = sessionStorage.userNo;
+      var dateTime = new Date().toString();
+      var lat = 12.562424;
+      var lon = 23.62323;
+      
+      $.ajax({
+    	  type:"POST",
+    	  url:'http://14.32.7.49:3334/insert',
+    		data:{uno:userNo, 
+    			    dest:$('#text').val(),
+    			    lat:12.523344,
+    			    lon:24.252334,
+    			    date:"2014-06-10 15:55:55"
+    		},
+    	  dataType:"JSON",
+    		success: function(jsonObj) {
+    			alert('메모 남기기 성공했어요~');
+    			location.href="list.html";
+    		},
+    		error: function(err){
+    			alert('에러에요~');
+    		}
+  		  });
+     	});
+    });
+	</script>
+</body>
+</html>

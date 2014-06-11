@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<script src="../js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+  아이디 : <input id="email" type="text"><br>
+  비밀번호 : <input id="pass" type="password"><br>
+ <button id="login">로그인</button>
+    
+
+</body>
+
+<script>
+ 
+
+		$(window).load(function(e){
+			$('#login').click(function(){
+			$.getJSON('http://14.32.7.49:3334/login?email='+$('#email').val()
+		       +'&password='+$('#pass').val() , function(jsonObj){
+				if(jsonObj.length == 0) {
+					alert("일치하는 회원 없음 다시 로그인해봐");
+				} else {
+					var email = jsonObj[0].EMAIL;
+					var pass = jsonObj[0].PWD;
+					
+					var db = openDatabase('N4CLoginDB','1.0','N4C_DB', 5*1024*1024);
+					 db.transaction(function(tx){
+						tx.executeSql("create table loginInfo (email,pass)");  
+						tx.executeSql('INSERT INTO loginInfo (email,pass) VALUES("'+email+'", "'+pass+'")');
+					}); 
+					/* location.href='list.html'; */
+				}
+			 });
+			});
+		}); 
+		
+	
+
+</script>
+
+</html>

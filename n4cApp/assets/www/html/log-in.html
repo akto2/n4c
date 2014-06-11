@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>registration</title>
+
+<link rel="stylesheet" href="../css/reset.css"></link>
+
+<link rel="stylesheet" href="../css/registration.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+</head>
+
+
+
+<body>
+	<div id="nav">
+		<h1 class="logo">LOGO</h1>
+		<span class="fa fa-bars"></span> <span class="fa fa-user"></span>
+	</div>
+
+	<div class="body b-body">
+		<div class="body s-body">
+
+			<form action="" class="regi-form">
+				<header>들어갈께요</header>
+
+				<fieldset>
+
+
+					<section>
+						<label class="input"> <i
+							class="icon-append icon-envelope-alt"></i> <input type="email"
+							placeholder="Email address" id="email"> <b
+							class="tooltip tooltip-bottom-right">Email</b>
+						</label>
+					</section>
+
+
+					<p class="forgotpassword"></p>
+
+					<section>
+						<label class="input"> <i class="icon-append icon-lock"></i>
+							<input type="password" placeholder="Password" id="pass">
+							<b class="tooltip tooltip-bottom-right">Password</b>
+						</label>
+					</section>
+
+				</fieldset>
+
+				<footer>
+					<button type="submit" class="button" id="login">로그인</button>
+					<button type="submit" class="button" id="singup">회원가입</button>
+
+				</footer>
+
+			</form>
+		</div>
+	</div>
+	<script src="../js/jquery-1.11.1.min.js"></script>
+	<script src="../js/Loginbutton.js"></script>
+
+	<script>
+$('#login').click(function(e) {
+	e.preventDefault();
+		$.ajax({
+			type : "POST",
+			url : 'http://14.32.7.49:3334/login',
+			data: {email : $('#email').val(),
+				     password : $('#pass').val()	  
+			},
+			dataType : "JSON",
+			
+			success : function(jsonObj) {
+				if(jsonObj.length == 0) {
+	          alert("일치하는 회원 없음 다시 로그인해봐");
+        } else {
+	          var email=$('#email').val();        
+	          $.getJSON('http://14.32.7.49:3334/getUser?email='+email , function(jsonObj){
+	          console.log(jsonObj)
+	          var uno = jsonObj[0].UNO;
+	            
+	          if(window.sessionStorage){
+                sessionStorage.userEmail = email;
+                sessionStorage.userNo = uno;
+	          }
+            location.href='list.html';
+	          });
+          }
+			},
+			error : function(err) {
+				alert('로그인 실패~');
+			}
+	});
+});
+	</script>
+</body>
+</html>

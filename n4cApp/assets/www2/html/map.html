@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>map</title>
+<link rel="stylesheet" href="../css/reset.css"></link>
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="../css/nav.css" />
+<link rel="stylesheet" type="text/css" href="../css/map.css" />
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui-1.10.4.custom.css" />
+
+
+
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/jquery-ui-1.10.4.custom.js"></script>
+
+
+</head>
+
+<body>
+
+  
+  <div id="warp">
+    <div id="nav">
+      <h1 class="logo">LOGO</h1>
+      <span class="fa fa-bars"></span> <span class="fa fa-globe"></span>
+      <span class="fa fa-user"></span>
+    </div>
+          <iframe class="map" name="frame" src="gMap.html"></iframe>
+   </div>
+</body>
+
+<script>
+
+$(window).bind('mousewheel', function(event) {
+	if (event.originalEvent.wheelDelta >= 0) {
+		$("#Chatbox").css("visibility", "hidden")
+	} else {
+		$("#Chatbox").css("visibility", "visible")
+	}
+});
+
+$('.fa-bars').click(function(e) {
+    e.preventDefault();
+    location.href="list.html";
+  });
+
+  $('.fa-globe').click(function(e) {
+	    e.preventDefault();
+	    location.href="map.html";
+	  });
+  
+  $('.fa-user').click(function(e) {
+	    e.preventDefault();
+	    location.href="my.html";
+	  });
+</script>
+
+</html>

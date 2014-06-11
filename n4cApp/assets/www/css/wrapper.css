@@ -1,0 +1,60 @@
+@CHARSET "UTF-8";
+
+
+#wrapper {
+	width: 100%;
+	box-shadow: 10px 5px 5px black;
+}
+
+.memoInfo {
+	
+padding : 8px 0 8px 13px;
+font-family : -webkit-pictograph;
+color: royalblue;
+font-weight: 700;
+font-size : 80%;
+}
+
+.grid img {
+	width: 100%;
+}
+
+.grid {
+	background:white;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+	-webkit-column-break-inside: avoid;
+	-moz-column-break-inside: avoid;
+	column-break-inside: avoid;
+	
+	background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+	margin-left: 0px;
+	margin-top: 15px
+}
+
+.grid p {
+	font: 12px/18px Arial, sans-serif;
+	color: #333;
+	margin: 11px 10px 11px 10px;
+	display: inline-block;
+}
+
+.username{
+	margin: 8px 0px 5px 11px;
+}
+
+.username1{
+	font-weight: bold; 
+}
+.username2{
+	font-size:12px; 
+	
+	}
+
+#container{ position: relative;   width: 95%; margin: auto; }
+
+.fav{width: 52px; height: 35px; float: right; margin: -1px 11px 0 0px; font-size: 10px;
+background: white; border: 1px royalblue solid;color:royalblue; font-weight: bold; }

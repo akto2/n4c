@@ -1,0 +1,29 @@
+
+#warp{width: 100%; height: 100%;  }
+
+#wrapper{ ;width: 100%; height:100%; }
+#header{padding: 11px; height: 44px; margin-top:12px; }
+#textbar{width: 100%;  height: 100%; margin-top:8px;  padding: 0px 0px 0 22px;
+}
+.text{width: 100%; height: 100%; border: none;  resize:none; 
+ } 
+
+#number{float: right; margin-right: 8px; margin-top: -5px; border: none; width: 28px;
+color:#A6A6A; font-size: 16px; color:#A6A6A6 }
+
+.btn{float: right; margin-right: 3%; margin-top: -9px; background: white; 
+border: 1px #EAEAEA solid; height: 35px; width: 55px
+}
+.username1{margin-left: 10px}
+
+#btnbar{width: 100%; height: 45px; position: fixed; bottom: 0; left: 0}
+.btn2, .btn1{width: 50%; height:45px;float: left;
+ background: #FCFCFC; border: none; border-top: 1px solid #D8D8D8}
+
+ 
+ #close{ text-align: center; margin: auto; margin-top:63px;  width: 100px; height: 30px; background: red; }
+ 
+ 
+ 
+ 
+ 
